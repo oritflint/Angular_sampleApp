@@ -1,0 +1,30 @@
+<div 
+*ngIf="!!holiday"
+class="holiday-container"
+[ngStyle]="{border: holiday.rating > 8 ? '2px solid Green' : '2px solid Red'}"
+[ngClass]="{'GoodHoliday': holiday.rating > 8 }"
+>   
+    <span [ngSwitch]="holiday.holidayType">
+        <p *ngSwitchCase="holidayTypeEnum.coupleDays">
+            couple Days
+            
+        </p>
+        <p *ngSwitchCase="holidayTypeEnum.singleDay">
+            single Day
+            
+        </p>
+        <p *ngSwitchCase="holidayTypeEnum.weekLong">
+            week Long
+        </p>
+        <p *ngSwitchDefault="">
+            other Holiday            
+        </p>
+
+    </span>
+
+    <h1>{{holiday.name | uppercase }}</h1>
+    <p>MainConduct: <b>{{holiday.mainConduct}}</b></p>
+    <p>Rating: {{holiday.rating}}</p>
+    <p>Date: {{holiday.holidayDate | date}}</p>
+    
+</div>
